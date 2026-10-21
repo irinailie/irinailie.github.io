@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<main class="splash">
+  <div class="splash-slides">
+    {%- for s in page.slides %}
+    <div class="splash-slide{% if forloop.first %} is-active{% endif %}" style="background-image:url('/img/{{ s.src }}')"></div>
+    {%- endfor %}
+  </div>
+  <div class="splash-content">
+    {%- if page.logo %}
+    <img class="splash-logo" src="/img/0f56419c_logo_zest_white-01.png" alt="Zest Collective" width="65" height="60">
+    {%- endif %}
+    <div class="splash-center">
+      <h1>{{ page.heading }}</h1>
+      {%- if page.subheading %}<h2>{{ page.subheading }}</h2>{% endif %}
+      {%- if page.text %}<p>{{ page.text }}</p>{% endif %}
+      {%- if page.links %}
+      <nav class="splash-nav">
+        {%- for l in page.links %}
+        <a href="{{ l.url }}">{{ l.label }}</a>
+        {%- endfor %}
+      </nav>
+      {%- endif %}
+    </div>
+    <div class="splash-social">
+      {%- for s in site.data.nav.social %}
+      <a href="{{ s.url }}"{% unless s.name == "email" %} target="_blank" rel="noopener"{% endunless %} aria-label="{{ s.name }}">{% include icon.html name=s.name %}</a>
+      {%- endfor %}
+    </div>
+  </div>
+</main>
+{{ content }}

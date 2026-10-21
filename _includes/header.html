@@ -1,0 +1,19 @@
+{%- assign lang = page.lang | default: "ro" -%}
+<header class="site-header">
+  <a class="logo" href="{% if lang == 'en' %}/en/home/{% else %}/ro/home/{% endif %}">
+    <img src="/img/020182a6_logo_zest_100x100-02.png" alt="Zest Collective" width="100" height="100">
+  </a>
+  <button class="menu-toggle" type="button" aria-label="Meniu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="main-nav">
+    {%- for item in site.data.nav[lang] %}
+    <a href="{{ item.url }}"{% if page.permalink == item.url %} class="active"{% endif %}>{{ item.title }}</a>
+    {%- endfor %}
+    <span class="language"><a href="/en/home/">EN</a> | <a href="/ro/home/">RO</a></span>
+    <span class="social">
+      {%- for s in site.data.nav.social %}
+      <a href="{{ s.url }}"{% unless s.name == "email" %} target="_blank" rel="noopener"{% endunless %} aria-label="{{ s.name }}">{% include icon.html name=s.name %}</a>
+      {%- endfor %}
+    </span>
+    <span class="address">Zest Collective<br>23 Strada Popa Petre<br>București, Municipiul București, 030167<br>Romania<br>+40 731 955 222</span>
+  </nav>
+</header>

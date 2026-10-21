@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'ro' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if page.permalink == "/" %}
+<title>{{ site.title }}</title>
+{%- else %}
+<title>{{ page.title }} &mdash; {{ site.title }}</title>
+{%- endif %}
+{%- assign img = page.image | default: site.default_image %}
+<meta name="description" content="{{ page.description | escape }}">
+<link rel="canonical" href="{{ site.url }}{{ page.permalink }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{% if page.permalink == '/' %}{{ site.title }}{% else %}{{ page.title }} &mdash; {{ site.title }}{% endif %}">
+<meta property="og:url" content="{{ site.url }}{{ page.permalink }}">
+<meta property="og:type" content="website">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:image" content="{{ site.url }}{{ img }}">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body class="layout-{{ page.layout }} lang-{{ page.lang | default: 'ro' }}">
+{{ content }}
+{% include cookies.html %}
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

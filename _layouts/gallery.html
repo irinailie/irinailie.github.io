@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% include header.html %}
+<main class="strip-gallery{% if page.captions %} with-captions{% else %} with-lightbox{% endif %}">
+  <div class="strip-viewport">
+    <div class="strip-track">
+      {%- for im in page.images %}
+      <figure class="strip-item">
+        {%- if page.captions and im.link %}
+        <a class="strip-img" href="{{ im.link }}"><img src="/img/{{ im.src }}" alt="{{ im.title | escape }}" width="{{ im.w }}" height="{{ im.h }}"{% if forloop.index > 3 %} loading="lazy"{% endif %}></a>
+        {%- else %}
+        <span class="strip-img"><img src="/img/{{ im.src }}" alt="{{ im.title | escape }}" width="{{ im.w }}" height="{{ im.h }}"{% if forloop.index > 3 %} loading="lazy"{% endif %}></span>
+        {%- endif %}
+        {%- if page.captions %}
+        <figcaption>
+          <div class="item-title">{{ im.title }}</div>
+          {%- if im.text %}<div class="item-text">{{ im.text }}</div>{% endif %}
+        </figcaption>
+        {%- endif %}
+      </figure>
+      {%- endfor %}
+    </div>
+  </div>
+  <button class="strip-arrow prev" type="button" aria-label="Inapoi"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10.5 2.5 5 8l5.5 5.5" /></svg></button>
+  <button class="strip-arrow next" type="button" aria-label="Inainte"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 2.5 11 8l-5.5 5.5" /></svg></button>
+</main>
+{{ content }}

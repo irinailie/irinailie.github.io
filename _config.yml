@@ -1,0 +1,15 @@
+# Setarile site-ului zestcollective.ro
+title: "Zest Collective - Design Interior pentru Birouri"
+url: "https://www.zestcollective.ro"
+baseurl: ""
+
+# Formularul de contact: mesajele ajung la aceasta adresa (prin serviciul gratuit FormSubmit)
+form_email: "design@zestcollective.ro"
+
+# Imaginea folosita cand pagina e distribuita pe Facebook / LinkedIn (daca pagina nu are una proprie)
+default_image: "/img/27e59456_logo_zest_site_b-01.png"
+
+markdown: kramdown
+exclude:
+  - CITESTE-MA.md
+  - README.md
